@@ -129,7 +129,7 @@ public class NCRProcessing
       if (openSQLServer())
       {           
           writeToLogFile("Processing NCR Feed Files");
-          writeToLogFile("   ");
+          //writeToLogFile("   ");
           // Process all feed files in the drop directory
           File dDir = new File(dropDir);
           File[] feedArray = dDir.listFiles();
@@ -825,13 +825,16 @@ public class NCRProcessing
               writeToLogFile("   ");  
           }
           
-          //  Validate Account Ids
+          //  Create single charges
           if (ok)
           {   
               int retValue = ssDB.summariseNCRCharges();
               if (retValue==0)
                 writeToLogFile(
-                    "   Summarise NCR Charges and initiate trial bills");
+                    "   No NCR Summary Single Charges created");
+              else if (retValue>0)                  
+                writeToLogFile(
+                    "   " + retValue+ "NCR Summary Single Charges created");
               else if (retValue==-2)
               {
                 writeToLogFile(
