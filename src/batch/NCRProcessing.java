@@ -831,10 +831,10 @@ public class NCRProcessing
               int retValue = ssDB.summariseNCRCharges();
               if (retValue==0)
                 writeToLogFile(
-                    "   No NCR Summary Single Charges created");
+                    "   No NCR Summary Single Charges created/updated");
               else if (retValue>0)                  
                 writeToLogFile(
-                    "   " + retValue+ "NCR Summary Single Charges created");
+                    "   " + retValue+ " NCR Summary Single Charges created/updated");
               else if (retValue==-2)
               {
                 writeToLogFile(
